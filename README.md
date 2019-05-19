@@ -8,7 +8,10 @@
 
 
 **基础功能拓展：**
+
+
 1.NoteList中显示条目增加时间戳显示
+
 
 2.添加笔记查询功能（根据标题进行模糊查询）
 
@@ -35,7 +38,9 @@
 
 ## 2.基础扩展
 
+
 **1.NoteList中显示条目增加时间戳显示 **
+
 
 ![记事本主界面（时间戳）](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/Screenshot_2019-%E4%B8%BB%E7%95%8C%E9%9D%A2.png)
 
@@ -45,40 +50,43 @@
 
 **关键实现代码：**
 
+
+
 **notelist_item.xml**
 
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <TextView
-        android:id="@android:id/text1"
+ 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/listPreferredItemHeight"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:gravity="center_vertical"
-        android:paddingLeft="5dip"
-        android:singleLine="true"/>
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@android:id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/listPreferredItemHeight"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dip"
+            android:singleLine="true"/>
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
 
+**NotePad.java**
 
+     private static final String[] PROJECTION = new String[] {
+                NotePad.Notes._ID, // 0
+                NotePad.Notes.COLUMN_NAME_TITLE, // 1
+                NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE,//在这里加入了修改时间的显示
+                NotePad.Notes.COLUMN_NAME_BACK_COLOR
+        };
 
- private static final String[] PROJECTION = new String[] {
-            NotePad.Notes._ID, // 0
-            NotePad.Notes.COLUMN_NAME_TITLE, // 1
-            NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE,//在这里加入了修改时间的显示
-            NotePad.Notes.COLUMN_NAME_BACK_COLOR
-    };
-    
     
 **2.添加笔记查询功能（根据标题进行模糊查询）**
 
