@@ -3,33 +3,50 @@
 ## 1.实验内容
 阅读NotePad的源代码并做相应的扩展。
 
+
 **已实现功能汇总：**
+
+
 **基础功能拓展：**
 1.NoteList中显示条目增加时间戳显示
+
 2.添加笔记查询功能（根据标题进行模糊查询）
 
 **附加功能拓展：**
+
 1.UI美化-改变每条便签颜色以代表不同心情
+
 2.导出笔记
+
 3.更改文本字体参数（大小、颜色）
+
 
 ![主界面](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/Screenshot_2019-%E4%B8%BB%E7%95%8C%E9%9D%A2.png)
 
 **图1 记事本主界面**
 
+![更新标题](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/%E6%9B%B4%E6%94%B9%E6%A0%87%E9%A2%98.png?raw=true)
+
+**图2 更新标题**
+
+![长按弹出菜单](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/%E9%95%BF%E6%8C%89%E5%BC%B9%E5%87%BA%E8%8F%9C%E5%8D%95.png)
+
+**图3 长按弹出菜单**
+
 ## 2.基础扩展
 
 **1.NoteList中显示条目增加时间戳显示 **
 
-![主界面](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/Screenshot_2019-%E4%B8%BB%E7%95%8C%E9%9D%A2.png)
+![记事本主界面（时间戳）](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/Screenshot_2019-%E4%B8%BB%E7%95%8C%E9%9D%A2.png)
 
-**图1 记事本主界面（时间戳）**
+**图4 记事本主界面（时间戳）**
 
 实现时间戳可以在原有代码的线性布局的基础上增加一个textview，用于显示时间。
 
 **关键实现代码：**
 
-****notelist_item.xml****
+**notelist_item.xml**
+
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -54,6 +71,7 @@
 </LinearLayout>
 
 
+
  private static final String[] PROJECTION = new String[] {
             NotePad.Notes._ID, // 0
             NotePad.Notes.COLUMN_NAME_TITLE, // 1
@@ -66,13 +84,13 @@
 
 ![查询界面](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/%E5%9F%BA%E4%BA%8E%E6%A0%87%E9%A2%98%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2.png?raw=true)
 
-**图1 模糊查询界面**
+**图5 模糊查询界面**
 
 实现了通过标题进行模糊查询
 
 **关键实现代码：**
 
-****NoteSearch.java****
+**NoteSearch.java**
 
     @Override
     public boolean onQueryTextChange(String s) {
@@ -105,7 +123,7 @@
     }
 
 
-****note_search.xml****
+**note_search.xml**
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -139,19 +157,22 @@
 
 ![心情便签（颜色）.png](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/%E5%BF%83%E6%83%85%E4%BE%BF%E7%AD%BE%EF%BC%88%E9%A2%9C%E8%89%B2%EF%BC%89.png)
 
-**图1 心情便签（颜色）1**
+**图6 心情便签（颜色）1**
 
 ![心情便签（颜色）.png](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/%E5%BF%83%E6%83%85%E4%BE%BF%E7%AD%BE%EF%BC%88%E9%A2%9C%E8%89%B2%EF%BC%892.png)
 
-**图1 心情便签（颜色）2**
+**图7 心情便签（颜色）2**
 
 ![心情便签（颜色）.png](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/%E5%BF%83%E6%83%85%E4%BE%BF%E7%AD%BE%EF%BC%88%E9%A2%9C%E8%89%B2%EF%BC%893.png)
 
-**图1 心情便签（颜色）3**
+**图8 心情便签（颜色）3**
 
 **关键实现代码：**
 
-****note_color.xml****
+
+
+**note_color.xml**
+
 
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -200,7 +221,7 @@
         android:onClick="red"/>
 </LinearLayout>
 
-****NoteColor.java****
+**NoteColor.java**
 
     @Override
     protected void onPause() {
@@ -231,7 +252,7 @@
         finish();
     }
 
-****Notelist.java****
+**Notelist.java**
 
     public class MyCursorAdapter extends SimpleCursorAdapter {
         public MyCursorAdapter(Context context, int layout, Cursor c,
@@ -274,17 +295,17 @@
 
 ![导出笔记（1）.png](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/%E5%AF%BC%E5%87%BA%E6%96%87%E4%BB%B6%EF%BC%881%EF%BC%89.png?raw=true)
 
-**图1 导出笔记（1）**
+**图9 导出笔记（1）**
 
 ![导出笔记（2）.png](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/%E5%AF%BC%E5%87%BA%E6%96%87%E4%BB%B6%EF%BC%882%EF%BC%89.png?raw=true)
 
-**图1 导出笔记（2）**
+**图10 导出笔记（2）**
 
 **关键实现代码：**
 
 首先要在清单中注册相关读取权限
 
-****AndroidManifest.xml****
+**AndroidManifest.xml**
 
    <uses-sdk>
         android:minSdkVersion="11"
@@ -332,7 +353,7 @@ OutputText.java
         }
     }
 
-****output_text.java****
+**output_text.java**
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
@@ -363,19 +384,19 @@ OutputText.java
 
 ![更改字体大小（1）.png](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/%E6%9B%B4%E6%94%B9%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F%EF%BC%881%EF%BC%89.png)
 
-**图1 更改字体大小（1）**
+**图11 更改字体大小（1）**
 
 ![更改字体大小（2）.png](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/%E6%9B%B4%E6%94%B9%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F%EF%BC%882%EF%BC%89.png)
 
-**图1 更改字体大小（2）**
+**图12 更改字体大小（2）**
 
 ![更改字体大小（3）.png](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/%E6%9B%B4%E6%94%B9%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F%EF%BC%883%EF%BC%89.png)
 
-**图1 更改字体大小（3）**
+**图13 更改字体大小（3）**
 
 **关键实现代码：**
 
-****editor_options_menu.xml****
+**editor_options_menu.xml**
 
     <item
     android:id="@+id/font_size"
@@ -399,7 +420,7 @@ OutputText.java
         </group>
     </menu>
 
-*****NoteEditor.java****
+**NoteEditor.java**
 
         case R.id.menu_revert:
             cancelNote();
@@ -424,15 +445,15 @@ OutputText.java
 
 ![更改字体颜色（1）.png](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/%E6%9B%B4%E6%94%B9%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%EF%BC%881%EF%BC%89.png)
 
-**图1 更改字体颜色（1）**
+**图14 更改字体颜色（1）**
 
 ![更改字体大小（2）.png](https://github.com/Huanglei666/NotePad-master_improved/blob/master/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE/%E6%9B%B4%E6%94%B9%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2%EF%BC%882%EF%BC%89.png)
 
-**图1 更改字体颜色（2）**
+**图15 更改字体颜色（2）**
 
 **关键实现代码：**
 
-****NoteEditor.java****
+**NoteEditor.java**
 
             case R.id.red_font:
                 mText.setTextColor(Color.RED);
